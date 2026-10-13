@@ -29,7 +29,7 @@ function Blogs() {
             }
         })
 
-        axios.get("http://localhost:5000/api/blogs").then((res) => {
+        axios.get("https://blog-portfolio-backend-251hyws1s-muruganantham1.vercel.app/api/blogs").then((res) => {
             console.log(res.data)
             setBlogs(res.data)
         }).catch(() => {
@@ -50,10 +50,10 @@ function Blogs() {
 
     const handleLike = async (blog_id) => {
         try {
-            const response = await axios.patch(`http://localhost:5000/api/blogs/like/${blog_id}`);
+            const response = await axios.patch(`https://blog-portfolio-backend-251hyws1s-muruganantham1.vercel.app/api/blogs/like/${blog_id}`);
             // After successfully updating the likes count in the backend, fetch the updated list of blogs
             if (response.status === 200) {
-                axios.get("http://localhost:5000/api/blogs").then((res) => {
+                axios.get("https://blog-portfolio-backend-251hyws1s-muruganantham1.vercel.app/api/blogs").then((res) => {
                     console.log(res.data)
                     setBlogs(res.data)
                 }).catch(() => {
@@ -67,7 +67,7 @@ function Blogs() {
 
     const handleDelete = async (blog_id) => {
         if (!window.confirm("Delete this blog?")) return;
-        await axios.delete(`http://localhost:5000/api/blogs/${blog_id}`);
+        await axios.delete(`https://blog-portfolio-backend-251hyws1s-muruganantham1.vercel.app/api/blogs/${blog_id}`);
         setBlogs(blogs.filter((b) => b._id !== blog_id));
     };
 
@@ -78,7 +78,7 @@ function Blogs() {
     };
 
     const handleUpdate = async (blog_id) => {
-        const res = await axios.put(`http://localhost:5000/api/blogs/${blog_id}`, {
+        const res = await axios.put(`https://blog-portfolio-backend-251hyws1s-muruganantham1.vercel.app/api/blogs/${blog_id}`, {
             newTitle: editTitle,
             newContent: editContent
         });
@@ -93,10 +93,10 @@ function Blogs() {
 
 
         const likes = 0
-        axios.post("http://localhost:5000/api/blogs", { newTitle, date, newContent, likes }).then((res) => {
+        axios.post("https://blog-portfolio-backend-251hyws1s-muruganantham1.vercel.app/api/blogs", { newTitle, date, newContent, likes }).then((res) => {
             console.log(res.data)
 
-            axios.get("http://localhost:5000/api/blogs").then((res) => {
+            axios.get("https://blog-portfolio-backend-251hyws1s-muruganantham1.vercel.app/api/blogs").then((res) => {
                 console.log(res.data)
                 setBlogs(res.data)
             }).catch(() => {

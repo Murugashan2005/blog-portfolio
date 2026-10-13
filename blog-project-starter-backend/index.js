@@ -12,8 +12,8 @@ app.use(cors())
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/blogDB').then(()=>{
-    console.log("Connection Successfull")
+mongoose.connect(process.env.MONGODB_URI).then(()=>{
+console.log("Connection Successfull")
 })
 
 
