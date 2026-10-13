@@ -6,21 +6,14 @@ const mongoose = require('mongoose');
 const cors = require("cors")
 
 const app = express();
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://blog-portfolio-frontend.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
+app.use(cors())
 
 // Middleware
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI).then(()=>{
-console.log("Connection Successfull")
+mongoose.connect('mongodb://localhost:27017/blogDB').then(()=>{
+    console.log("Connection Successfull")
 })
 
 
