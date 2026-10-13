@@ -6,7 +6,14 @@ const mongoose = require('mongoose');
 const cors = require("cors")
 
 const app = express();
-app.use(cors())
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://blog-portfolio-frontend.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 // Middleware
 app.use(bodyParser.json());
