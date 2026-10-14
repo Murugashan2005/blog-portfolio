@@ -39,8 +39,8 @@ function Login() {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen bg-gray-100">
-            <form onSubmit={handleLogin} className="p-10 bg-white rounded-lg shadow-md" style={{ width: "75%" }}>
+        <div className="flex justify-center items-center min-h-screen py-6 bg-gray-100">
+            <form onSubmit={handleLogin} className="p-6 sm:p-10 bg-white rounded-lg shadow-md w-11/12 sm:w-3/4 md:w-1/2 max-w-md">
                 <h2 className="text-2xl font-bold mb-5 text-gray-800">Login</h2>
                 <div className="mb-4">
                     <label className="block text-gray-700">Email:</label>

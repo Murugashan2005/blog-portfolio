@@ -71,7 +71,7 @@ function Home() {
             </div>
 
             <div>
-                <h2 className='text-center text-5xl my-14 font-bold'>Checkout My Live <span className='text-orange-400'>Projects</span> Here</h2>
+                <h2 className='text-center text-3xl md:text-5xl my-8 md:my-14 font-bold px-4'>Checkout My Live <span className='text-orange-400'>Projects</span> Here</h2>
                 <div className='flex justify-around my-5 flex-col sm:flex-row'>
 
                     <img src={P1} className='w-64 border rounded-md cursor-pointer' alt="" />

@@ -26,7 +26,7 @@ function Blogs() {
 
             }
             else {
-
+                setAdmin(false)
                 console.log("User Logged Out")
             }
         })
@@ -115,12 +115,12 @@ function Blogs() {
     };
 
     return (
-        <div className="blog-section py-14">
-            <h2 className="text-center text-5xl font-bold mb-14">Latest  <span className='text-orange-400'>Blogs</span> 📚</h2>
+        <div className="blog-section py-8 md:py-14">
+            <h2 className="text-center text-3xl md:text-5xl font-bold mb-8 md:mb-14 px-4">Latest  <span className='text-orange-400'>Blogs</span> 📚</h2>
 
             {/* Blog creation form */}
             {admin ?
-                <div className="blog-creation-form mb-8" style={{ width: "80%", margin: "auto" }}>
+                <div className="blog-creation-form mb-8 w-11/12 md:w-4/5 mx-auto">
                     <form onSubmit={handleNewBlogSubmit} className="flex flex-col gap-4">
                         <input
                             type="text"
@@ -146,11 +146,11 @@ function Blogs() {
 
             <div className="blogs-container grid grid-cols-1 md:grid-cols-2 gap-6 container mx-auto px-4">
                 {blogs.map((blog) => (
-                    <div key={blog._id} className="blog-post mb-8 p-6 bg-white shadow-lg rounded-lg">
+                    <div key={blog._id} className="blog-post mb-4 md:mb-8 p-4 md:p-6 bg-white shadow-lg rounded-lg break-words">
                         {editingId === blog._id ? (
                             <div className="flex flex-col gap-3">
-                                <input value={editTitle} onChange={(e) => setEditTitle(e.target.value)} className="p-2 border rounded" />
-                                <textarea value={editContent} onChange={(e) => setEditContent(e.target.value)} className="p-2 border rounded" rows="4" />
+                                <input value={editTitle} onChange={(e) => setEditTitle(e.target.value)} className="p-2 border rounded w-full" />
+                                <textarea value={editContent} onChange={(e) => setEditContent(e.target.value)} className="p-2 border rounded w-full" rows="4" />
                                 <div className="flex gap-3">
                                     <button onClick={() => handleUpdate(blog._id)} className="bg-green-500 text-white px-4 py-1 rounded">Save</button>
                                     <button onClick={() => setEditingId(null)} className="bg-gray-400 text-white px-4 py-1 rounded">Cancel</button>
@@ -159,14 +159,14 @@ function Blogs() {
                         ) : (
                             <>
 
-                                <h3 className="blog-title font-semibold text-2xl text-gray-800 mb-3">{blog.newTitle}</h3>
+                                <h3 className="blog-title font-semibold text-xl md:text-2xl text-gray-800 mb-3">{blog.newTitle}</h3>
                                 <p className="blog-date text-gray-400 text-sm mb-4">{blog.date}</p>
                                 <p className="blog-content text-gray-600 mb-4">{blog.newContent}</p>
                                 <span className="text-blue-500 cursor-pointer" onClick={() => handleLike(blog._id)}>Like</span>
                                 <span className="ml-2">{blog.likes} Likes</span>
 
                                 {admin && (
-                                    <div className="flex gap-3 mt-4">
+                                    <div className="flex flex-wrap gap-3 mt-4">
                                         <button onClick={() => startEdit(blog)} className="bg-blue-500 text-white px-4 py-1 rounded">Edit</button>
                                         <button onClick={() => handleDelete(blog._id)} className="bg-red-500 text-white px-4 py-1 rounded">Delete</button>
                                     </div>
